@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orbium</title>
+    <link rel="stylesheet" href="orbium.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
+    <script defer src="/lib/speakClient.js"></script>
+</head>
+<body>
+    <div class="header">
+        <img src="/img/logo.png" width="200" height="200">
+        <hr>
+        <div style="display:flex;gap:5px;">
+            <button class="button_select"onclick="location.href='/games.html'">Games</button>
+        </div>
+        <hr>
+    </div>
+    <br>
+    <div class="fuckworld_chat" id="fw_chat">
+        <div class="overlay" style="position:absolute;" id="overlay_cont">
+            <div style="display:flex;flex-direction: row;">
+                <img src="/img/logo.png" width="120" height="120">
+                <h1 class="logo">Orbium</h1>
+            </div>
+            Version 1.2.2
+            <hr>
+            <div style="display:flex;flex-direction:column;">
+                <input placeholder="enter username" id="username">
+                <input placeholder="Room ID (optional)" id="roomid">
+            </div>
+            <hr>
+            <p>Select an avatar:</p>
+            <div style="display:flex;flex-direction:row;">
+                <button class="av_option" onclick="pfp('/img/avatar/guest.png');"><img width="60" height="60" id="pfp_onute" src="/img/avatar/guest.png"></button>
+                <button class="av_option"onclick="pfp('/img/avatar/onute2.png');"><img width="60" height="60" id="pfp_ius" src="/img/avatar/onute2.png"></button>
+                <button class="av_option"onclick="pfp('/img/avatar/onute3.png');"><img width="60" height="60" id="pfp_jabba" src="/img/avatar/onute3.png"></button>
+            </div>
+            <div style="display:flex;flex-direction: row;">
+                    <p>or if you want, use Custom avatar URL </p>
+                    <input type="text" id="av" placeholder="pass custom avatar link..">
+                    <button class="button_select" onclick="pfp(document.getElementById('av').value);">Submit Avatar</button>
+            </div>
+            <hr>
+            <button class="button_select" id="login_submit">Login</button>
+        </div>
+        <div class="chat_cont" id="chat_cont" style="position:absolute;">
+            Loading...
+           <br>
+        
+        </div>
+        
+        <script>
+        function addemoji(emjj){
+          document.getElementById("msg_val").value+=':emoji_' + emjj + ':';
+        }
+            </script>
+        <hr>
+        <p id="useramt" style="margin-top:470px;">Users online: 3</p>
+        <div class="msg_bar" id="msg_bar">
+            <div class="send" id="send_msg"></div>
+            <input type="text" id="msg_val" placeholder="enter speak here">
+
+            <div style="display:flex;flex-direction: column;">
+            <div style="display:flex;flex-direction:row;">
+                <button class="grid_option" onclick="addemoji('smile')"><img width="20" height="20" src="/img/emoji/emoji_smile.png"></button>
+                <button class="grid_option" onclick="addemoji('angry')"><img width="20" height="20" src="/img/emoji/emoji_angry.png"></button>
+                <button class="grid_option"onclick="addemoji('sunglasses')"><img width="20" height="20" src="/img/emoji/emoji_sunglasses.png"></button>
+            </div>
+            <div style="display:flex;flex-direction:row;">
+                <button class="grid_option" onclick="addemoji('smug')"><img width="20" height="20" src="/img/emoji/emoji_smug.png"></button>
+                <button class="grid_option" onclick="addemoji('friends')"><img width="20" height="20" src="/img/emoji/emoji_friends.png"></button>
+                <button class="grid_option"onclick="addemoji('cry')"><img width="20" height="20" src="/img/emoji/emoji_cry.png"></button>
+            </div>
+            <div style="display:flex;flex-direction:row;">
+                <button class="grid_option" onclick="addemoji('innocent')"><img width="20" height="20" src="/img/emoji/emoji_innocent.png"></button>
+                <button class="grid_option" onclick="addemoji('grin')"><img width="20" height="20" src="/img/emoji/emoji_grin.png"></button>
+                <button class="grid_option" onclick="addemoji('mouthzipped')"><img width="20" height="20" src="/img/emoji/emoji_mouthzipped.png"></button>
+            </div>
+            
+            </div>
+
+            <div class="upload_option">
+                <button class="button_select" id="img">Upload Image</button>
+                <button class="button_select" id="vid">Upload Video</button>
+            </div>
+            <button class="button_select" id="voice" style="width:80px">Turn On Voice 🔊</button>
+
+            <div style="display:flex;flex-direction: column;">
+                Page Effects:
+                <div style="display:flex;flex-direction:row;">
+                    <button class="grid_option" id="effect_rainb">R</button>
+                    <button class="grid_option" id="effect_off">Off</button>
+                </div>
+                
+                </div>
+        </div>
+    </div>
+    <br>
+    <hr>
+    <div style="display:flex;flex-direction: column;padding:20px;font-size:14px;width:100%;height:auto;justify-content: center;">
+        <div> Orbium 2024</div>
+    </div>
+    <div class="menu_right">
+        <div class="menu_right_tabs">
+            
+        </div>
+    </div>
+    <div id="audio"></div>
+    <script src="script.js"></script>
+</body>
+</html>

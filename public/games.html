@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fuckworld</title>
+    <link rel="stylesheet" href="fuckworld.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
+</head>
+<body>
+    <div class="header">
+        <img src="/img/logo.png" width="200" height="200">
+        <hr>
+        <div style="display:flex;gap:5px;">
+            <button class="button_select" onclick="location.href='/videos.html'">Videos</button>
+            <button class="button_select" onclick="location.href='/jabbascript/index.html'">Jabbascript Hypercompiler</button>
+            <button class="button_select" onclick="location.href='/pmdm/index.html'">PMDM Plus</button>
+            <button class="button_select"onclick="location.href='/index.html'">Home</button>
+        </div>
+        <hr>
+    </div>
+    <marquee direction="right" style="position:relative;top:0px;left:0px;width:400px;" scrollamount="20"><img style="animation: jabbspin 2s linear infinite" width="200" height="80" src="/img/avatar/onute3.png"></marquee>
+    <br>
+    <p class="paragraph_box">
+    See official HyperWORLD Page HERE!
+    <button class="button_select" onclick="window.open('https://onutemaster777.github.io/');">HyperWORLD Official</button>
+    &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;
+    <br>
+    See BonziWORLD Fun Club HERE!
+    <button class="button_select" onclick="window.open('https://bonziworld.org');">BonziWORLD.org</button>
+    &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;
+    </p>
+    <br>
+    <hr>
+    <hr>
+    <p class="paragraph_box">Cut The Rope</p>
+    <iframe style="width:700px;height:500px;" src="https://play.famobi.com/wrapper/cut-the-rope/A1000-10"></iframe>
+    <hr>
+    <br>
+    <hr>
+    <p class="paragraph_box">Icy Tower (laggy, emulates flash player)</p>
+    <div id="it_container" style="width:500px;height:500px;"></div>
+    <hr>
+    <br>
+    <hr>
+    <p class="paragraph_box">More games are of arrive to soon!</p>
+    <hr>
+    <div style="display:flex;flex-direction: column;padding:20px;"></div>
+        <div style="display:flex;width:100%;height:auto;justify-content: center;">Copyright FuckWORLD Chat And Server - 2024</div>
+        <div style="display:flex;width:100%;height:auto;justify-content: center;">FuckWORLD Chat sounds (belonging to Samsung), and BonziWORLD Wiki are property of their respective owners.</div>
+    </div>
+    <br>
+    <script>
+        window.RufflePlayer = window.RufflePlayer || {};
+        window.addEventListener("load", (event) => {
+            const ruffle = window.RufflePlayer.newest();
+            const player = ruffle.createPlayer();
+            const container = document.getElementById("it_container");
+            container.appendChild(player);
+            player.load("/swf/icytower.swf");
+        });
+    </script>
+    <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
+    <script src="script.js"></script>
+</body>
+</html>
