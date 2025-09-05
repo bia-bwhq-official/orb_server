@@ -260,7 +260,7 @@ io.on("connection", function(socket){
                     }
                 }
           } else {
-            socket.emit("talk",{msg: "<span style='color:red;'>Your message was marked as unsafe automatically by the server. If this was a mistake, please notify staff!</span>", name: thisuser.username, avatar: thisuser.avatar});
+            socket.emit("talk",{msg: "<span style='color:red;'>Your message was invalid.</span>", name: thisuser.username, avatar: thisuser.avatar});
           }
           console.log(thisuser.username + ": " + data.msg);
          }
