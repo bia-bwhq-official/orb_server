@@ -120,7 +120,7 @@ var trophylist = [
     "162.210.194.1"
 ];
 var ratelimit = 1100;
-const adminpass = "fruitniggerarrow";
+const adminpass = "MEJOW1";
 var pastmsg = fs.readFileSync('newmsg.cock', 'utf8');
 var usercount = 1;
 io.on("connection", function(socket){
