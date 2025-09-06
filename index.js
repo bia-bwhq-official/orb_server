@@ -46,10 +46,6 @@ const blacklist = [
 
 app.use(express.static("public"));
 
-app.use((req, res, next) => {
-    console.log(req.ip);
-    res.status(404).sendFile(path.join(__dirname, 'public', '/404.html'));
-});
 
 http.listen(2000, function(){
   var port = http.address().port;
