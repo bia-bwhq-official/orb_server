@@ -118,6 +118,8 @@ var trophylist = [
 var ratelimit = 1100;
 const adminpass = "MEJOW1";
 var pastmsg = fs.readFileSync('newmsg.cock', 'utf8');
+pastmsg = ``;
+
 var usercount = 1;
 io.on("connection", function(socket){
     console.log(socket.id);
