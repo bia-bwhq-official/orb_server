@@ -70,6 +70,43 @@ document.getElementById("img").onclick = () => {
         socket.emit("image",newimg);
     }
 }
+function tohref(url) {
+  if (typeof url !== 'string' || url.trim() === '') {
+    return null;
+  }
+
+  url = url.trim();
+
+  try {
+    if(!/^https?:\/\//i.test(url)) {
+      url = 'https://' + url;
+    }
+
+   let urlObject = new URL(url);
+    
+    if (!['http:', 'https:'].includes(urlObject.protocol)) {
+      return null;
+    }
+
+    let escapedUrl = urlObject.href
+      .replace(/&/g, '&amp;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#x27;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;');
+
+      let result = `<a href="${escapedUrl}"></a>`;
+      if(escapedUrl == null || escapedUrl == undefined){
+        result = ``;
+      }
+    return result;
+
+  } catch (error) {
+    return null;
+  }
+}
+
+
  document.getElementById("vid").onclick = () => {
     var newvid = prompt("Youtube video URL/link?");
         socket.emit("video",newvid);
@@ -106,7 +143,7 @@ socket.on("leave", user => {
     var newmsg = document.createElement("span");
     document.getElementById("chat_cont").appendChild(newmsg);
     newmsg.style.marginLeft = "6px";
-    newmsg.innerHTML = user+" has left FuckWORLD Chat.";
+    newmsg.innerHTML = user+" has left the Chat.";
     document.getElementById("chat_cont").appendChild(document.createElement("hr"));
     document.getElementById("chat_cont").scrollTop = document.getElementById("chat_cont").scrollHeight;
 });
@@ -122,6 +159,12 @@ socket.on("talk",(data) => {
     var notif = new Audio("notify.mp3");
     notif.play();
     }
+    let words = data.msg.split(" ");
+    words.forEach((word,index) => {
+        if(word.startsWith("https://") && word.includes("."))words[index]=tohref(word);
+    });
+    words = words.join(" ");
+    data.msg = words;
     var localId = Id(10);
     var newmsg = document.createElement("div");
     newmsg.classList.add("msg");

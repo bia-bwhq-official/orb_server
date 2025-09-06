@@ -51,7 +51,7 @@ app.use((req, res, next) => {
     res.status(404).sendFile(path.join(__dirname, 'public', '/404.html'));
 });
 
-http.listen(3000, function(){
+http.listen(2000, function(){
   var port = http.address().port;
   console.log('Orbium is running on localhost:%s' + '!', port);
 });
@@ -242,8 +242,16 @@ io.on("connection", function(socket){
                     if(trophylist.includes(ip)){
                         data.msg = data.msg + "<br> <span style='color:orange'>(This user has a trophy! <img src='/img/trophy.png' width='35' height='35'></img>)</span>"
                     }
-                  socket.broadcast.emit("talk",{msg: data.msg, name: thisuser.username, avatar: thisuser.avatar, status: thisuser.status, rawmsg: rawmsg});
-                  socket.emit("talk",{msg: data.msg, name: thisuser.username, avatar: thisuser.avatar, status: thisuser.status, rawmsg: rawmsg});
+                    if(data.msg.includes("https://bonzi-tube.onrender.com/video?id=")){
+                        try{
+                            let token = "https://bonzi-tube.onrender.com/video?id=";
+                            let thisId = data.msg.substring(data.msg.indexOf(token),data.msg.indexOf(token)+token.length);
+                            console.log(thisId);
+                        }catch(e){}
+                    }
+                    let newMsg ={msg: data.msg, name: thisuser.username, avatar: thisuser.avatar, status: thisuser.status, rawmsg: rawmsg};
+                  socket.broadcast.emit("talk",newMsg);
+                  socket.emit("talk",newMsg);
                   cansend = false;
                   thisuser.lastmsg = data.msg;
                   setTimeout(() => {cansend = true; if(wait > ratelimit)wait-=ratelimit;},wait)
